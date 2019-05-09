@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+body, html {
+    overflow: auto;
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+/* 
+
+Colors: 
+    red: #e83641
+    light-gray: #f0f0f0;
+    blue-light: #a6dadc
+    blue-mid: #427a9e
+    blue-dark: #1c3559
+
+Fonts:
+    font-family: 'Open Sans', sans-serif; 
+    font-family: 'Playfair Display', serif;
+    
+*/

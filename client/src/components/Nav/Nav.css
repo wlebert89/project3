@@ -1,0 +1,21 @@
+#navbar {
+    background: #ffffff;
+    padding: 0px;
+}
+
+li {
+    padding: 0 15px;
+}
+
+#brand {
+    padding: 20px 35px;
+    margin: 0px;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-toggler {
+    margin-right: 10px;
+}

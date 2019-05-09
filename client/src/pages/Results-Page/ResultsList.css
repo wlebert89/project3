@@ -1,0 +1,8 @@
+.results-container {
+    margin-top: 20px;
+    height: 100%;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}

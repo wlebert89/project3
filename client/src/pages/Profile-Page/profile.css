@@ -1,0 +1,86 @@
+/* Universal Elements */
+p {
+    margin-bottom: 8px;
+}
+
+h2 {
+    margin: 10px 0px 5px 0px;
+}
+
+h3 {
+    margin: 5px 0px;
+}
+
+h5, h6 {
+    text-align: center;
+}
+
+.inner {
+    background-color: white;
+    padding: 15px;
+}
+
+.profile-container {
+    margin-bottom: 100px;
+}
+
+/* Profile Header */
+img {
+    margin: 10px auto;
+    height: 200px;
+    width: auto;
+}
+
+.profile-header {
+    margin: 20px 0px;
+    background-color: white;
+}
+
+.header-info {
+    margin: auto 0;
+}
+
+.btn-main {
+    background: #427a9e;
+    border: none;
+    margin: 0 auto 10px auto;
+    display: block;
+    border-radius: 50px;
+    font-size: 18px;
+}
+
+/* Content Sections */
+.content-row {
+    margin-bottom: 20px;
+}
+
+/* Graphs and Charts Section */
+.chart-section {
+    height: 200px;
+    padding-right: 10px;
+}
+
+/* News Section */
+.news {
+    padding-left: 10px;
+    height: 100%;
+}
+
+/* Bills Section */
+.bills {
+    height: 360px;
+    overflow: auto;
+    padding-right: 10px;
+}
+
+/* Letter Modal */
+#letters {
+    background-color: white;
+    padding: 5px;
+}
+
+#template-header {
+    text-align: left;
+    padding-left: 5px;
+}
+
