@@ -3,10 +3,35 @@
 }
 
 #save-template {
-    background-color: #427a9e;
-    border: 1px solid #427a9e;
+    margin: 10px 0px;
+    width: 50%;
+    background: #427a9e;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50px;
 }
 
 .letter {
     text-align: left;
+}
+
+#letter-title {
+    margin-bottom: 10px;
+}
+
+.letter-row {
+    margin-bottom: 80px;
+}
+
+#letter-templates {
+    padding: 20px 40px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.templates-row {
+    padding-top: 20px;
 }
