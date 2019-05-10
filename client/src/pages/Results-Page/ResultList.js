@@ -19,7 +19,6 @@ class ResultList extends React.Component {
         const resArray = [];
         API.googleCivic("civicinfo/v2/representatives?key=AIzaSyDItSTpKpynNXJ7a7PBiM_U66zgssbKXzU&address=" + query)
         .then(response => {
-            console.log(response.data);
             for (var i = 2; i < 5; i++){
                 resArray.push(response.data.officials[i]);
             }

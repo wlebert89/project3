@@ -19,28 +19,29 @@ class Finance extends Component {
   componentDidMount() {
     //runs after the render method then updates the render method
     let name = "Warren"
-  API.proPublica("/campaign-finance/v1/2016/candidates/search.json?query="+name)
-  .then(function(res){
-    console.log(res);
-    if(res.data.results[0].candidate.id){
-      var thisId = res.data.results[0].candidate.id
-      API.proPublica("/campaign-finance/v1/2016/candidates/" + thisId + ".json",)
-  .then(function(res2){
-    console.log(res2);})
+    API.proPublica("/campaign-finance/v1/2016/candidates/search.json?query=" + name)
+      .then(function (res) {
+        console.log(res);
+        if (res.data.results[0].candidate.id) {
+          var thisId = res.data.results[0].candidate.id
+          API.proPublica("/campaign-finance/v1/2016/candidates/" + thisId + ".json")
+            .then(function (res2) {
+              console.log(res2);
+            })
 
-  } else {console.log("Id unavailble")}
-  
-  })
+        } else { console.log("Id unavailble") }
+
+      })
   }
-  
 
-  render() { 
-    return(//this could be a div, it just needs to display our results- one child of the return
-        <React.Fragment>
-            <div className="id-container">
-            </div>
 
-        </React.Fragment>
+  render() {
+    return (//this could be a div, it just needs to display our results- one child of the return
+      <React.Fragment>
+        <div className="id-container">
+        </div>
+
+      </React.Fragment>
     )
   }
 }
