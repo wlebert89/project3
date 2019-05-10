@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
 import API from "../../API";
+import News from "../../components/News/news";
 
 class Profile extends React.Component {
     state = {
@@ -108,30 +109,15 @@ class Profile extends React.Component {
 
                         <div className="col-md-4 news">
                             <div className="inner">
-                                <h2>News</h2>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
+                                {this.state.newsResults.map(news => {
+                                    return (
+                                        <News
+                                            title={}
+                                            link={}
+                                            summary={}
+                                        />
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
