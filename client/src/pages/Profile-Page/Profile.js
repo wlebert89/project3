@@ -14,13 +14,6 @@ class Profile extends React.Component {
         billsResults: [],
         financeData: [2, 1]
     };
-
-    // componentDidMount(query){
-    //     Finance.get(query)
-    // }
-
-    
-
     componentDidMount(){
         console.log(this.props.location.state.name);
     }
