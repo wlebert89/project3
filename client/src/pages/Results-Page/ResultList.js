@@ -55,7 +55,7 @@ class ResultList extends React.Component {
                                     party={rep.party || "Party affiliation not available"} 
                                     // role={}
                                     phone={rep.phones[0] || "Phone number not available"}
-                                    email={rep.urls[0]|| "Website not available"}
+                                    email={rep.urls[0] || "Website not available"}
                                 />
                             );
                         })}
