@@ -18,7 +18,7 @@ function Nav() {
                             <a className="nav-link" href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Send a Letter</a>
+                            <a className="nav-link" href="/letters">Send a Letter</a>
                         </li>
                     </ul>
                 </div>
