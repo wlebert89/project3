@@ -5,16 +5,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
-// import Finance from "../../API/Finance";
 
 class Profile extends React.Component {
-    state = {
-        newsResults: [],
-        contributionResults: [],
-        billsResults: [],
-        financeData: [2, 1]
-    };
-  
 
     hideModal(){
         console.log("Saving...");
@@ -24,53 +16,6 @@ class Profile extends React.Component {
         // })
     };
 
-    constructor(props) {
-        //Constructor is making attributing state to the component while props is used to "send data to components"
-        super(props); //this binds "this" to the parent constructor, ie ProPublica
-        this.state = {
-          //defining that object state of our component
-          items: []
-        };
-      }
-
-    componentDidMount() {
-        //runs after the render method then updates the render method
-    
-        fetch("https://api.propublica.org/campaign-finance/v1/2016/candidates/search.json?query=Warren", {
-            headers: {
-              //confirmed this url and key in Postman
-              "X-API-Key": "P7tVdzc7MzKiD6JU1DDfadW9kSCbxJU8Tj03yK8w"
-              // "Content-Type": "application/x-www-form-urlencoded",
-            } //
-          })
-            .then(entireResponse => entireResponse.json())
-            .then(data => {
-                this.setState({
-                    items: data
-                  }); 
-                  if(this.state.items.results[0].candidate.id){
-                      var thisId = this.state.items.results[0].candidate.id
-                  } else {console.log("Id unavailble")}
-                  
-            
-    
-            
-            fetch("https://api.propublica.org/campaign-finance/v1/2016/candidates/" + thisId + ".json", {
-                headers: {
-                  //confirmed this url and key in Postman
-                  "X-API-Key": "P7tVdzc7MzKiD6JU1DDfadW9kSCbxJU8Tj03yK8w"
-                  // "Content-Type": "application/x-www-form-urlencoded",
-                } //
-              })
-                .then(entireResponse => entireResponse.json())
-                .then(data => {
-                    this.setState({
-                        items: data
-                      }); 
-                      console.log(this.state.items);
-                });} 
-            )};
-    
     render(){
         return (
             <div>
@@ -88,13 +33,10 @@ class Profile extends React.Component {
                         </div>
 
                         <div className="col-md-8 header-info">
-                            {this.state.items.map(each => {
-                                return(
-                                    <div>
-                                        <p>{each.id}</p>
-                                    </div>
-                                )
-                            })}
+                            <h2>Dwayne Herbert Mountain Dew Camacho</h2>
+                            <h3>President | Green Party</h3>
+                            <p>P: 919-867-5309 | F: 919-867-5309 | <a href="mailto:dcamacho@us.gov">dcamacho@us.gov</a></p>
+                            <p>@elPresidente | Facebook Page</p>
                             <button className="btn btn-primary btn-lg btn-main" data-toggle="modal" data-target="#letter-modal">Send a Letter</button>
                         </div>
                     </div>
@@ -104,9 +46,7 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 chart-section">
                                     <div className="inner">
-                                        <Pie 
-                                            financeData={this.state.financeData}
-                                        />
+                                        <Pie />
                                     </div>    
                                 </div>
                             </div>
@@ -186,7 +126,7 @@ class Profile extends React.Component {
                                     <form id="letters">
                                         <div className="form-group">
                                             <label for="letter-form">Or submit your own template here:</label>
-                                            <textarea className="form-control" id="letter-form" rows="10"></textarea>
+                                            <textarea class="form-control" id="letter-form" rows="10"></textarea>
                                         </div>
                                     </form>
                                 </div>

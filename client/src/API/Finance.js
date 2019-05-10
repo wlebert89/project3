@@ -18,7 +18,10 @@ class Finance extends Component {
 
   componentDidMount() {
     //runs after the render method then updates the render method
-
+  propublica.post("Warren")
+  .then(function(res){
+    
+  })
     fetch("https://api.propublica.org/campaign-finance/v1/2016/candidates/search.json?query=Warren", {
         headers: {
           //confirmed this url and key in Postman
