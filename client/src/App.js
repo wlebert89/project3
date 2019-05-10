@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "./pages/Profile-Page/Profile";
 import ResultList from "./pages/Results-Page/ResultList";
 import NoMatch from "./pages/404-Page/NoMatch";
+import Finance from "./API/Finance"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={ResultList} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/finance" component={Finance} />
           <Route component={NoMatch} />
         </Switch>
       </div>
