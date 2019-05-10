@@ -1,29 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Pie} from 'react-chartjs-2';
 
-class PieChart extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            chartData: {
-                labels: ['PAC Contributions', 'Individual Contributions'],
-                datasets: [{
-                    data: props.financeData,
-                    backgroundColor: ["#e83641", "#427a9e"],
-                    borderColor: "white",
-                    borderWidth: 1
-                }]
-            }
-        }
-    }
-
-    
-
-    render(){
+function PieChart(props) {
         return (
             <div className="pie-chart">
                 <Pie 
-                    data={this.state.chartData}
+                    data={{
+                        labels: ['PAC Contributions', 'Individual Contributions'],
+                        datasets: [{
+                            data: props.financeData,
+                            backgroundColor: ["#e83641", "#427a9e"],
+                            borderColor: "white",
+                            borderWidth: 1
+                        }]
+                    }}
                     options={{
                         responsive: false,
                         title:{
@@ -43,7 +33,7 @@ class PieChart extends Component {
                 />
             </div>
         );
-    }
+    
 }
 
 export default PieChart;

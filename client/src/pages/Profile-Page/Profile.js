@@ -30,6 +30,9 @@ class Profile extends React.Component {
                             const individual = res2.data.results[0].total_from_individuals
                             const pac = res2.data.results[0].total_from_pacs
                             contributionArr.push(individual, pac);
+                            this.setState({
+                                financeData: contributionArr
+                            })
                             console.log("Contributions: " + contributionArr);
                             API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
                                 .then(res3 => {
@@ -129,35 +132,6 @@ class Profile extends React.Component {
                                 <h6>Article Title/Link</h6>
                                 <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="modal fade" id="letter-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">Letter Templates</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div className="modal-body">
-                                    <h6 id="template-header">Copy one of our templates:</h6>
-                                    <div id="letter-templates"></div>
-                                    <form id="letters">
-                                        <div className="form-group">
-                                            <label for="letter-form">Or submit your own template here:</label>
-                                            <textarea className="form-control" id="letter-form" rows="10"></textarea>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.hideModal}>Save Template</button>
-                                </div>
                             </div>
                         </div>
                     </div>
