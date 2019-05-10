@@ -5,8 +5,19 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
+// import Finance from "../../API/Finance";
 
 class Profile extends React.Component {
+    state = {
+        newsResults: [],
+        contributionResults: [],
+        billsResults: [],
+        financeData: [2, 1]
+    };
+
+    // componentDidMount(query){
+    //     Finance.get(query)
+    // }
 
     hideModal(){
         console.log("Saving...");
@@ -46,7 +57,9 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 chart-section">
                                     <div className="inner">
-                                        <Pie />
+                                        <Pie 
+                                            financeData={this.state.financeData}
+                                        />
                                     </div>    
                                 </div>
                             </div>
@@ -126,7 +139,7 @@ class Profile extends React.Component {
                                     <form id="letters">
                                         <div className="form-group">
                                             <label for="letter-form">Or submit your own template here:</label>
-                                            <textarea class="form-control" id="letter-form" rows="10"></textarea>
+                                            <textarea className="form-control" id="letter-form" rows="10"></textarea>
                                         </div>
                                     </form>
                                 </div>
