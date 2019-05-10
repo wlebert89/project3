@@ -17,7 +17,7 @@ router.route("/openstate").post((req, res) => {
 
 router.route("/propublica").post((req, res) => {
     axios.create({
-        baseURL: "https://api.propublica.org",
+        baseURL: "https://api.propublica.org/campaign-finance/v1/2016/candidates/search.json?query=Warren",
         headers: {
             "X-API-Key": "S7rXcvNNyKCQjMyHjzug6HChVXuoEYRtYGEBsEaF"
         }
@@ -29,6 +29,40 @@ router.route("/propublica").post((req, res) => {
     });
 });
 
+// fetch("https://api.propublica.org/campaign-finance/v1/2016/candidates/search.json?query=Warren", {
+//     headers: {
+//       //confirmed this url and key in Postman
+//       "X-API-Key": "P7tVdzc7MzKiD6JU1DDfadW9kSCbxJU8Tj03yK8w"
+//       // "Content-Type": "application/x-www-form-urlencoded",
+//     } //
+//   })
+//     .then(entireResponse => entireResponse.json())
+//     .then(data => {
+//         this.setState({
+//             items: data
+//           }); 
+//           if(this.state.items.results[0].candidate.id){
+//               var thisId = this.state.items.results[0].candidate.id
+//           } else {console.log("Id unavailble")}
+          
+    
+
+    
+//     fetch("https://api.propublica.org/campaign-finance/v1/2016/candidates/" + thisId + ".json", {
+//         headers: {
+//           //confirmed this url and key in Postman
+//           "X-API-Key": "P7tVdzc7MzKiD6JU1DDfadW9kSCbxJU8Tj03yK8w"
+//           // "Content-Type": "application/x-www-form-urlencoded",
+//         } //
+//       })
+//         .then(entireResponse => entireResponse.json())
+//         .then(data => {
+//             this.setState({
+//                 items: data
+//               }); 
+//               console.log(this.state.items);
+//         });} 
+//     )};
 router.route("/googlecivic").post((req, res) => {
     axios.create({
         baseURL: "https://www.googleapis.com/"

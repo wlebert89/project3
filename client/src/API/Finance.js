@@ -59,7 +59,7 @@ class Finance extends Component {
   render() { 
     return(//this could be a div, it just needs to display our results- one child of the return
         <React.Fragment>
-            {/* <div className="id-container">
+            <div className="id-container">
                     {this.state.items.map(each => {//this works becuase this.state.items returns an array
                         return(
                         <div>
@@ -69,7 +69,7 @@ class Finance extends Component {
                            
                         </div>)
                     })}
-            </div> */}
+            </div>
         </React.Fragment>
     )
   }

@@ -37,26 +37,6 @@ class ResultList extends React.Component {
             console.log(err);
         });
 
-        //OPEN STATE && PROPUBLICA SEARCH
-
-        // const data = zipcodes.lookup(address);
-        // const state = data.state;
-        // // const lat = data.latitude.toFixed(2);
-        // // const lon = data.longitude.toFixed(2);
-        // // const openStateQuery = "lat=" + lat + "&long=" + lon;
-        // // API.openState("api/v1/legislators/geo/?" + openStateQuery).then(OSresponse => {
-        // //     console.log("OSresponse:", OSresponse.data);
-        // //     this.setState({
-        // //         openState: OSresponse.data,
-        // //     });
-        // // });
-
-        // API.proPublica("congress/v1/members/senate/" + state + "/current.json").then(PPresponse => {
-        //     console.log("PPresponse:", PPresponse.data);
-        //     // this.setStateP({
-        //     //     proPublica: PPresponse
-        //     // });
-        // }).catch(err => console.log(err));
     }
 
     render() {
