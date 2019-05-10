@@ -17,6 +17,8 @@ class PieChart extends Component {
         }
     }
 
+    
+
     render(){
         return (
             <div className="pie-chart">
