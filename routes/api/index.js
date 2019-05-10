@@ -40,4 +40,18 @@ router.route("/googlecivic").post((req, res) => {
     });
 });
 
+router.route("/news").post((req, res) => {
+    axios.create({
+        baseURL: "https://newsapi.org",
+        headers: {
+            "X-API-Key": "3dbaa769c45946c8a7ef2c22f8a7fc01"
+        }
+    })
+    .get(req.body.query)
+    .then(response => {
+        console.log(response.data);
+        res.json(response.data);
+    });
+});
+
 module.exports = router;
