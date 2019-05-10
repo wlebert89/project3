@@ -4,32 +4,43 @@ import NavBar from "../../components/Nav/Nav";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
-// import Finance from "../../API/Finance";
+import API from "../../API";
 
 class Profile extends React.Component {
     state = {
         newsResults: [],
         contributionResults: [],
         billsResults: [],
-        financeData: [2, 1]
+        financeData: []
     };
 
-    
-    thing(){
+    componentDidMount() {
         console.log(this.props.location.state.name);
-
-            //runs after the render method then updates the render method
+        const name = this.props.location.state.name;
+        const lastName = name.substr(name.indexOf(" ") + 1);
+        console.log(lastName);
+        API.proPublica("/campaign-finance/v1/2016/candidates/search.json?query=" + lastName)
+            .then(res => {
+                if (res.data.results[0].candidate.id) {
+                    var memberId = res.data.results[0].candidate.id
+                    console.log("Member ID: " + memberId);
+                    API.proPublica("/campaign-finance/v1/2016/candidates/" + memberId + ".json")
+                        .then(res2 => {
+                            const contributionArr = []
+                            const individual = res2.data.results[0].total_from_individuals
+                            const pac = res2.data.results[0].total_from_pacs
+                            contributionArr.push(individual, pac);
+                            console.log("Contributions: " + contributionArr);
+                            API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
+                                .then(res3 => {
+                                    console.log("Bills: " +res3.data.results[0].bills);
+                                });
+                        });
+                }
+            });
     }
 
-    hideModal(){
-        console.log("Saving...");
-        // $.ajax({
-        //     method: "POST",
-        //     url: 
-        // })
-    };
-
-    render(){
+    render() {
         return (
             <div>
                 <Helmet>
@@ -39,7 +50,7 @@ class Profile extends React.Component {
                 <div className="container profile-container">
                     <div className="row profile-header">
                         <div className="col-md-4 text-center">
-                            <img src="http://static1.squarespace.com/static/501b147ae4b07cab1f91ea20/57f47decbe65944d4a761b9b/57f45eb3e3df28be9827fa7f/1475632979683/?format=1500w" alt="Politician Name"/>
+                            <img src="http://static1.squarespace.com/static/501b147ae4b07cab1f91ea20/57f47decbe65944d4a761b9b/57f45eb3e3df28be9827fa7f/1475632979683/?format=1500w" alt="Politician Name" />
                         </div>
 
                         <div className="col-md-8 header-info">
@@ -56,10 +67,10 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 chart-section">
                                     <div className="inner">
-                                        <Pie 
+                                        <Pie
                                             financeData={this.state.financeData}
                                         />
-                                    </div>    
+                                    </div>
                                 </div>
                             </div>
                             <div className="row">
@@ -68,25 +79,25 @@ class Profile extends React.Component {
                                         <h2>Bills</h2>
                                         <h5>E.L.E.C.T.R.O.L.Y.T.E.S. Act</h5>
                                         <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Electrolytes are what plants crave, so like, uh, let's 
-                                            give them some right? Then we'll have as much as we 
+                                        <p>Electrolytes are what plants crave, so like, uh, let's
+                                            give them some right? Then we'll have as much as we
                                             can eat and they'll be super hydrating!</p>
-                                        <br></br> 
+                                        <br></br>
                                         <h5>Bill Name</h5>
                                         <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to 
+                                        <p>Short summary here about the bill and how it manages to
                                             do something or enact some law or something, you know.</p>
-                                        <br></br> 
+                                        <br></br>
                                         <h5>Bill Name</h5>
                                         <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to 
+                                        <p>Short summary here about the bill and how it manages to
                                             do something or enact some law or something, you know.</p>
-                                        <br></br> 
+                                        <br></br>
                                         <h5>Bill Name</h5>
                                         <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to 
+                                        <p>Short summary here about the bill and how it manages to
                                             do something or enact some law or something, you know.</p>
-                                        <br></br> 
+                                        <br></br>
                                     </div>
                                 </div>
                             </div>
@@ -96,27 +107,27 @@ class Profile extends React.Component {
                             <div className="inner">
                                 <h2>News</h2>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
                                 <br></br>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
                                 <br></br>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
                                 <br></br>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
-                                    <br></br>
+                                <br></br>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
-                                    <br></br>
+                                <br></br>
                                 <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he 
+                                <p>A short summary about the article. Maybe he
                                     took a bribe, maybe he punched a reporter.</p>
                             </div>
                         </div>
