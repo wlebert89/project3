@@ -30,6 +30,9 @@ class Profile extends React.Component {
                             const individual = res2.data.results[0].total_from_individuals
                             const pac = res2.data.results[0].total_from_pacs
                             contributionArr.push(individual, pac);
+                            this.setState({
+                                financeData: contributionArr
+                            })
                             console.log("Contributions: " + contributionArr);
                             API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
                                 .then(res3 => {
