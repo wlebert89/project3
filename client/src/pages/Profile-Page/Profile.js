@@ -1,7 +1,6 @@
 import React from 'react';
 import "./profile.css";
 import NavBar from "../../components/Nav/Nav";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
@@ -35,9 +34,6 @@ class Profile extends React.Component {
                     <style>{'body { background-color: #f0f0f0;}'}</style>
                 </Helmet>
                 <NavBar />
-                <SearchBar 
-                    placeholder="Search by Representative Name"
-                />
                 <div className="container profile-container">
                     <div className="row profile-header">
                         <div className="col-md-4 text-center">
