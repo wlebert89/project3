@@ -33,7 +33,13 @@ class Profile extends React.Component {
                             console.log("Contributions: " + contributionArr);
                             API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
                                 .then(res3 => {
-                                    console.log("Bills: " +res3.data.results[0].bills);
+                                    console.log(res3.data.results[0].bills);
+                                    const newsQuery = name.split(" ").join("+");
+                                    API.news("/v2/everything?q=" + newsQuery)
+                                        .then(function (res4) {
+                                            console.log(res4.data.articles);
+                                            
+                                        });
                                 });
                         });
                 }
