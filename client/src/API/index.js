@@ -18,4 +18,7 @@ export default {
             query
         });
     }
-}
+    
+}//Here we have our routes for the APIs
+//flow goes API>index.js => 
+//This is what we reference

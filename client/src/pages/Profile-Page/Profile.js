@@ -15,6 +15,8 @@ class Profile extends React.Component {
     };
     componentDidMount(){
         console.log(this.props.location.state.name);
+
+            //runs after the render method then updates the render method
     }
 
     hideModal(){
