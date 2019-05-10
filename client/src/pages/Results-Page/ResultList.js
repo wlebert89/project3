@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import zipcodes from "zipcodes";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ResultsDisplay from "../../components/ResultDisplay/ResultDisplay";
 import Nav from "../../components/Nav/Nav"
@@ -11,14 +10,10 @@ import "./ResultsList.css";
 
 class ResultList extends React.Component {
     state = {
-        // openState: [],
-        googleCivic: [],
-        //
+        googleCivic: []
     }
 
     onSearchSubmit = address => {
-
-        // GOOGLE CIVIC SEARCH
 
         const query = address.split(" ").join('%20');
         const resArray = [];
@@ -36,7 +31,6 @@ class ResultList extends React.Component {
         }).catch(err => {
             console.log(err);
         });
-
     }
 
     render() {
@@ -52,20 +46,6 @@ class ResultList extends React.Component {
                 />
                 <div className="container">
                     <div className="results-container">
-                        {/* {this.state.openState.map(rep => {
-                            return (
-                                <ResultsDisplay
-                                    key={rep.id}
-                                    image={rep.photo_url || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-                                    name={rep.full_name}
-                                    party={rep.party || "Party affiliation not available"}
-                                    id={rep.id || "Member ID not available"}
-                                    phone={rep.offices[0].phone || "Phone number not available"}
-                                    email={rep.email || "Email not available"}
-                                    address={rep.offices[0].address.replace(/;/g, " ") || "Address not available"}
-                                />
-                            );
-                        })} */}
                         {this.state.googleCivic.map(rep => {
                             return (
                                 <ResultsDisplay
@@ -75,8 +55,7 @@ class ResultList extends React.Component {
                                     party={rep.party || "Party affiliation not available"} 
                                     // role={}
                                     phone={rep.phones[0] || "Phone number not available"}
-                                    email={rep.urls[0]|| "Email not available"}
-                                    // address={"rep.address" || "Address not available"}
+                                    email={rep.urls[0]|| "Website not available"}
                                 />
                             );
                         })}

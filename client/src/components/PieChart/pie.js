@@ -8,7 +8,7 @@ class PieChart extends Component {
             chartData: {
                 labels: ['PAC Contributions', 'Individual Contributions'],
                 datasets: [{
-                    data: [1590450.0, 2106573.0],
+                    data: props.financeData,
                     backgroundColor: ["#e83641", "#427a9e"],
                     borderColor: "white",
                     borderWidth: 1

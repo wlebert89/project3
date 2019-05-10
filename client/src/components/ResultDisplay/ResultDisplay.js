@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import "./ResultDisplay.css";
 
 function ResultsDisplay(props) {
@@ -12,10 +13,12 @@ function ResultsDisplay(props) {
                 <div className="description"> {props.party} | {props.role}</div>
                 <div className="contact-info"><i className="fas fa-phone contact-icon"></i>{props.phone}</div>
                 <div className="contact-info"><i class="fas fa-desktop contact-icon"></i>{props.email}</div>
-                {/* <div className="contact-info"><i className="fas fa-mail-bulk contact-icon"></i>{props.address}</div> */}
             </div>
             <hr />
-            <button className="btn btn-primary btn-lg btn-main">View Profile</button>
+            <Link to={{ pathname: '/profile', state: { name: props.name } }}>
+                <button className="btn btn-primary btn-lg btn-main">View Profile</button>
+            </Link>
+
         </div>
     )
 }
