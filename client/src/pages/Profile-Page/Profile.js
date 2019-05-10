@@ -8,6 +8,12 @@ import Pie from "../../components/PieChart/pie";
 
 class Profile extends React.Component {
 
+    
+
+    componentDidMount(){
+        console.log(this.props.location.state.name);
+    }
+
     hideModal(){
         console.log("Saving...");
         // $.ajax({
