@@ -9,10 +9,10 @@ function ResultsDisplay(props) {
             </div>
             <div className="result-info">
                 <div className="name">{props.name}</div>
-                <div className="description"> {props.party} | {props.id}</div>
+                <div className="description"> {props.party} | {props.role}</div>
                 <div className="contact-info"><i className="fas fa-phone contact-icon"></i>{props.phone}</div>
-                <div className="contact-info"><i className="fas fa-envelope contact-icon"></i>{props.email}</div>
-                <div className="contact-info"><i className="fas fa-mail-bulk contact-icon"></i>{props.address}</div>
+                <div className="contact-info"><i class="fas fa-desktop contact-icon"></i>{props.email}</div>
+                {/* <div className="contact-info"><i className="fas fa-mail-bulk contact-icon"></i>{props.address}</div> */}
             </div>
             <hr />
             <button className="btn btn-primary btn-lg btn-main">View Profile</button>
