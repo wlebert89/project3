@@ -14,7 +14,9 @@ class Profile extends React.Component {
         billsResults: [],
         financeData: [2, 1]
     };
-    componentDidMount(){
+
+    
+    thing(){
         console.log(this.props.location.state.name);
     }
 

@@ -12,7 +12,7 @@ function ResultsDisplay(props) {
                 <div className="name">{props.name}</div>
                 <div className="description"> {props.party} | {props.role}</div>
                 <div className="contact-info"><i className="fas fa-phone contact-icon"></i>{props.phone}</div>
-                <div className="contact-info"><i class="fas fa-desktop contact-icon"></i>{props.email}</div>
+                <div className="contact-info"><i className="fas fa-desktop contact-icon"></i>{props.email}</div>
             </div>
             <hr />
             <Link to={{ pathname: '/profile', state: { name: props.name } }}>
