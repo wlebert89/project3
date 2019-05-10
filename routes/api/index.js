@@ -19,7 +19,7 @@ router.route("/propublica").post((req, res) => {
     axios.create({
         baseURL: "https://api.propublica.org",
         headers: {
-            "X-API-Key": "API key: S7rXcvNNyKCQjMyHjzug6HChVXuoEYRtYGEBsEaF"
+            "X-API-Key": "S7rXcvNNyKCQjMyHjzug6HChVXuoEYRtYGEBsEaF"
         }
     })
     .get(req.body.query)
@@ -29,7 +29,15 @@ router.route("/propublica").post((req, res) => {
     });
 });
 
-
-
+router.route("/googlecivic").post((req, res) => {
+    axios.create({
+        baseURL: "https://www.googleapis.com/"
+    })
+    .get(req.body.query)
+    .then(response => {
+        console.log(response.data);
+        res.json(response.data);
+    });
+});
 
 module.exports = router;
