@@ -15,18 +15,25 @@ class Letters extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h6>Copy one of our templates:</h6>
+                            <h2>Copy one of our templates:</h2>
                             <div id="letter-templates"></div>
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-md-12">    
+                        <div className="col-md-12">  
+                            <h2>Or Submit Your Own:</h2>  
                             <form id="letters">
+                                <div class="form-group">
+                                    <label className="letter" for="letter-title">Title</label>
+                                    <input type="text" class="form-control" id="letter-title" />
+                                </div>
+
                                 <div className="form-group">
-                                    <label for="letter-form">Or submit your own template here:</label>
+                                    <label className ="letter" for="letter-form">Letter Body</label>
                                     <textarea className="form-control" id="letter-form" rows="10"></textarea>
                                 </div>
+
                                 <button type="button" className="btn btn-primary" id="save-template">Save Template</button>
                             </form>
                         </div>    
