@@ -8,9 +8,8 @@ import API from "../../API";
 
 class Profile extends React.Component {
     state = {
-        newsResults: [],
-        contributionResults: [],
-        billsResults: [],
+        news: [],
+        bills: [],
         financeData: []
     };
 
@@ -21,25 +20,30 @@ class Profile extends React.Component {
         console.log(lastName);
         API.proPublica("/campaign-finance/v1/2016/candidates/search.json?query=" + lastName)
             .then(res => {
-                if (res.data.results[0].candidate.id) {
-                    var memberId = res.data.results[0].candidate.id
-                    console.log("Member ID: " + memberId);
-                    API.proPublica("/campaign-finance/v1/2016/candidates/" + memberId + ".json")
-                        .then(res2 => {
-                            const contributionArr = []
-                            const individual = res2.data.results[0].total_from_individuals
-                            const pac = res2.data.results[0].total_from_pacs
-                            contributionArr.push(individual, pac);
-                            this.setState({
-                                financeData: contributionArr
-                            })
-                            console.log("Contributions: " + contributionArr);
-                            API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
-                                .then(res3 => {
-                                    console.log("Bills: " +res3.data.results[0].bills);
-                                });
-                        });
-                }
+                var memberId = res.data.results[0].candidate.id;
+                console.log("Member ID: " + memberId);
+                API.proPublica("/campaign-finance/v1/2016/candidates/" + memberId + ".json")
+                    .then(res2 => {
+                        const contributionArr = []
+                        const individual = res2.data.results[0].total_from_individuals
+                        const pac = res2.data.results[0].total_from_pacs
+                        contributionArr.push(individual, pac);
+                        console.log("Contributions: " + contributionArr);
+                        API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
+                            .then(res3 => {
+                                console.log(res3.data.results[0].bills);
+                                const newsQuery = name.split(" ").join("+");
+                                API.news("/v2/everything?q=" + newsQuery)
+                                    .then(res4 => {
+                                        console.log(res4.data.articles);
+                                        this.setState({
+                                            news: res4.data,
+                                            bills: res3.data.results[0].bills,
+                                            financeData: contributionArr
+                                        });
+                                    });
+                            });
+                    });
             });
     }
 
@@ -57,7 +61,7 @@ class Profile extends React.Component {
                         </div>
 
                         <div className="col-md-8 header-info">
-                            <h2>Dwayne Herbert Mountain Dew Camacho</h2>
+                            <h2>Name</h2>
                             <h3>President | Green Party</h3>
                             <p>P: 919-867-5309 | F: 919-867-5309 | <a href="mailto:dcamacho@us.gov">dcamacho@us.gov</a></p>
                             <p>@elPresidente | Facebook Page</p>
