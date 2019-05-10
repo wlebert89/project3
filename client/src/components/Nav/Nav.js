@@ -15,10 +15,10 @@ function Nav() {
                             <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/profile">Profile Search</a>
+                            <a className="nav-link" href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/resultlist">Address Search</a>
+                            <a className="nav-link" href="#">Send a Letter</a>
                         </li>
                     </ul>
                 </div>

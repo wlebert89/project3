@@ -1,15 +1,21 @@
 import axios from "axios";
 
 export default {
-    getOpenStateData: query => {
+    openState: query => {
         return axios.post("/api/openstate", {
             query
-        })
+        });
     },
 
-    getProPublicaData: query => {
+    proPublica: query => {
         return axios.post("/api/propublica", {
             query
-        })
+        });
     },
+
+    googleCivic: query => {
+        return axios.post("/api/googlecivic", {
+            query
+        });
+    }
 }
