@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
 import API from "../../API";
+import Bills from "../../components/Bills/Bills";
+import News from "../../components/News/News";
 
 class Profile extends React.Component {
     state = {
@@ -13,16 +15,22 @@ class Profile extends React.Component {
         financeData: []
     };
 
+    getLastName = fullName => {
+        const name = fullName.split(" ");
+        return name[name.length - 1];
+    }
+
     componentDidMount() {
         console.log(this.props.location.state.name);
         const name = this.props.location.state.name;
-        const lastName = name.substr(name.indexOf(" ") + 1);
+        const lastName = this.getLastName(name);
         console.log(lastName);
+        const queryName = name.split(" ").join("+");
         API.proPublica("/campaign-finance/v1/2016/candidates/search.json?query=" + lastName)
             .then(res => {
-                var memberId = res.data.results[0].candidate.id;
-                console.log("Member ID: " + memberId);
-                API.proPublica("/campaign-finance/v1/2016/candidates/" + memberId + ".json")
+                console.log(res);
+                const relativeURI = res.data.results[0].candidate.relative_uri;
+                API.proPublica("/campaign-finance/v1/2016" + relativeURI)
                     .then(res2 => {
                         const contributionArr = []
                         const individual = res2.data.results[0].total_from_individuals
@@ -32,12 +40,11 @@ class Profile extends React.Component {
                         API.proPublica("/congress/v1/bills/search.json?query=" + lastName)
                             .then(res3 => {
                                 console.log(res3.data.results[0].bills);
-                                const newsQuery = name.split(" ").join("+");
-                                API.news("/v2/everything?q=" + newsQuery)
+                                API.news("/v2/everything?q=" + queryName)
                                     .then(res4 => {
                                         console.log(res4.data.articles);
                                         this.setState({
-                                            news: res4.data,
+                                            news: res4.data.articles,
                                             bills: res3.data.results[0].bills,
                                             financeData: contributionArr
                                         });
@@ -57,13 +64,13 @@ class Profile extends React.Component {
                 <div className="container profile-container">
                     <div className="row profile-header">
                         <div className="col-md-4 text-center">
-                            <img src="http://static1.squarespace.com/static/501b147ae4b07cab1f91ea20/57f47decbe65944d4a761b9b/57f45eb3e3df28be9827fa7f/1475632979683/?format=1500w" alt="Politician Name" />
+                            <img src={this.props.location.state.image} alt={this.props.location.state.name} />
                         </div>
 
                         <div className="col-md-8 header-info">
-                            <h2>Name</h2>
-                            <h3>President | Green Party</h3>
-                            <p>P: 919-867-5309 | F: 919-867-5309 | <a href="mailto:dcamacho@us.gov">dcamacho@us.gov</a></p>
+                            <h2>{this.props.location.state.name}</h2>
+                            <h3>{this.props.location.state.role}| {this.props.location.state.party}</h3>
+                            <p>{this.props.location.state.phone} | <a href={this.props.location.state.website}>{this.props.location.state.website}</a></p>
                             <p>@elPresidente | Facebook Page</p>
                             <button className="btn btn-primary btn-lg btn-main" data-toggle="modal" data-target="#letter-modal">Send a Letter</button>
                         </div>
@@ -84,27 +91,17 @@ class Profile extends React.Component {
                                 <div className="col-md-12 bills">
                                     <div className="inner bills">
                                         <h2>Bills</h2>
-                                        <h5>E.L.E.C.T.R.O.L.Y.T.E.S. Act</h5>
-                                        <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Electrolytes are what plants crave, so like, uh, let's
-                                            give them some right? Then we'll have as much as we
-                                            can eat and they'll be super hydrating!</p>
-                                        <br></br>
-                                        <h5>Bill Name</h5>
-                                        <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to
-                                            do something or enact some law or something, you know.</p>
-                                        <br></br>
-                                        <h5>Bill Name</h5>
-                                        <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to
-                                            do something or enact some law or something, you know.</p>
-                                        <br></br>
-                                        <h5>Bill Name</h5>
-                                        <h6>Introduced 4/20/2019 | <a href="https://chrisglass.com/journal/downloads/TPSreport.pdf" target="_blank">PDF Link</a></h6>
-                                        <p>Short summary here about the bill and how it manages to
-                                            do something or enact some law or something, you know.</p>
-                                        <br></br>
+                                        {this.state.bills.map(bill => {
+                                            return (
+                                                <Bills
+                                                    key={bill.bill_id}
+                                                    title={bill.primary_subject}
+                                                    date={bill.introduced_date}
+                                                    link={bill.gpo_pdf_uri}
+                                                    description={bill.title}
+                                                />
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
@@ -113,29 +110,16 @@ class Profile extends React.Component {
                         <div className="col-md-4 news">
                             <div className="inner">
                                 <h2>News</h2>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
-                                <br></br>
-                                <h6>Article Title/Link</h6>
-                                <p>A short summary about the article. Maybe he
-                                    took a bribe, maybe he punched a reporter.</p>
+                                {this.state.news.map(article => {
+                                    return (
+                                    <News
+                                        key={article.title}
+                                        title={article.title}
+                                        link={article.url}
+                                        description={article.description}
+                                    />
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
