@@ -36,7 +36,7 @@ class Profile extends React.Component {
                                 const newsQuery = name.split(" ").join("+");
                                 API.news("/v2/everything?q=" + newsQuery)
                                     .then(res4 => {
-                                        console.log(res4.data.articles);
+                                        console.log("res4.data"+res4.data);
                                         this.setState({
                                             news: res4.data,
                                             bills: res3.data.results[0].bills,
@@ -66,7 +66,6 @@ class Profile extends React.Component {
                             <h3>President | Green Party</h3>
                             <p>P: 919-867-5309 | F: 919-867-5309 | <a href="mailto:dcamacho@us.gov">dcamacho@us.gov</a></p>
                             <p>@elPresidente | Facebook Page</p>
-                            <button className="btn btn-primary btn-lg btn-main" data-toggle="modal" data-target="#letter-modal">Send a Letter</button>
                         </div>
                     </div>
 
@@ -113,15 +112,16 @@ class Profile extends React.Component {
 
                         <div className="col-md-4 news">
                             <div className="inner">
-                                {this.state.newsResults.map(news => {
+                                {/* {this.state.news.articles.map(article => {
                                     return (
                                         <News
-                                            title={}
-                                            link={}
-                                            summary={}
+                                            title={article.title}
+                                            link={article.url}
+                                            summary={article.description}
                                         />
                                     );
-                                })}
+                                })} */}
+                                {console.log("this.state.news="+this.state.news)}
                             </div>
                         </div>
                     </div>
