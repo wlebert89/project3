@@ -42,7 +42,7 @@ class Profile extends React.Component {
                                 console.log(res3.data.results[0].bills);
                                 API.news("/v2/everything?q=" + queryName)
                                     .then(res4 => {
-                                        console.log(res4.data.articles);
+                                        console.log("res4.data"+res4.data);
                                         this.setState({
                                             news: res4.data.articles,
                                             bills: res3.data.results[0].bills,
@@ -58,7 +58,7 @@ class Profile extends React.Component {
         return (
             <div>
                 <Helmet>
-                    <style>{'body { background-color: #f0f0f0;}'}</style>
+                    <style>{'body { background-color: #f0f0f0;} h3 {text-align: left;}'}</style>
                 </Helmet>
                 <NavBar />
                 <div className="container profile-container">
@@ -71,8 +71,10 @@ class Profile extends React.Component {
                             <h2>{this.props.location.state.name}</h2>
                             <h3>{this.props.location.state.role}| {this.props.location.state.party}</h3>
                             <p>{this.props.location.state.phone} | <a href={this.props.location.state.website}>{this.props.location.state.website}</a></p>
-                            <p>@elPresidente | Facebook Page</p>
-                            <button className="btn btn-primary btn-lg btn-main" data-toggle="modal" data-target="#letter-modal">Send a Letter</button>
+                            <div className="social-links">
+                                <a href={"https://facebook.com/" + this.props.location.state.facebook}><i className="fab fa-facebook-square social-icon"></i></a>
+                                <a href={"https://twitter.com/" + this.props.location.state.twitter}><i className="fab fa-twitter-square social-icon"></i></a>
+                            </div>
                         </div>
                     </div>
 
@@ -90,7 +92,7 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 bills">
                                     <div className="inner bills">
-                                        <h2>Bills</h2>
+                                        <h2 className="section-title">Sponsored/Co-Sponsored Bills</h2>
                                         {this.state.bills.map(bill => {
                                             return (
                                                 <Bills
@@ -108,8 +110,8 @@ class Profile extends React.Component {
                         </div>
 
                         <div className="col-md-4 news">
-                            <div className="inner">
-                                <h2>News</h2>
+                            <div className="inner news">
+                                <h2 className="section-title">News</h2>
                                 {this.state.news.map(article => {
                                     return (
                                     <News
