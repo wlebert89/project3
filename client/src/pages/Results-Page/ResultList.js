@@ -55,6 +55,8 @@ class ResultList extends React.Component {
                                     // role={}
                                     phone={rep.phones[0] || "Phone number not available"}
                                     website={rep.urls[0] || "Website not available"}
+                                    facebook={rep.channels[0].id}
+                                    twitter={rep.channels[1].id}
                                 />
                             );
                         })}
