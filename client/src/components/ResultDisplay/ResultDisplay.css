@@ -57,6 +57,14 @@ img.picture {
     margin: 10px;
 }
 
+a {
+    color: #000;
+}
+
+a:visited {
+    color: #000;
+}
+
 .btn-main {
     background: #427a9e;
     border: none;
