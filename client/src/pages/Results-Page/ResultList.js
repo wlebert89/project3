@@ -41,7 +41,7 @@ class ResultList extends React.Component {
                 <Nav />
                 <SearchBar
                     onSubmit={this.onSearchSubmit}
-                    placeholder="Enter a zip code..."
+                    placeholder="Enter a full address..."
                 />
                 <div className="container">
                     <div className="results-container">

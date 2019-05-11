@@ -4,7 +4,7 @@ p {
 }
 
 h2 {
-    margin: 10px 0px 5px 0px;
+    margin-bottom: 5px;
 }
 
 h3 {
@@ -40,18 +40,20 @@ img {
     margin: auto 0;
 }
 
-.btn-main {
-    background: #427a9e;
-    border: none;
-    margin: 0 auto 10px auto;
-    display: block;
-    border-radius: 50px;
-    font-size: 18px;
+.social-links {
+    margin-left: -10px;
 }
 
 /* Content Sections */
 .content-row {
     margin-bottom: 20px;
+}
+
+.section-title {
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    padding: 0px 0px 15px 0px;
 }
 
 /* Graphs and Charts Section */
