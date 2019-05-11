@@ -13,6 +13,8 @@ function ResultsDisplay(props) {
                 <div className="description"> {props.party} | {props.role}</div>
                 <div className="contact-info"><i className="fas fa-phone contact-icon"></i>{props.phone}</div>
                 <div className="contact-info"><i className="fas fa-desktop contact-icon"></i>{props.website}</div>
+                <a className="contact-info" href={"https://facebook.com/" + props.facebook}><i className="fab fa-facebook-square social-icon"></i></a>
+                <a className="contact-info" href={"https://twitter.com/" + props.twitter}><i className="fab fa-twitter-square social-icon"></i></a>
             </div>
             <hr />
             <Link to={{
@@ -22,7 +24,9 @@ function ResultsDisplay(props) {
                     party: props.party,
                     role: props.role,
                     phone: props.phone,
-                    website: props.website
+                    website: props.website,
+                    facebook: props.facebook,
+                    twitter: props.twitter
                 }
             }}>
                 <button className="btn btn-primary btn-lg btn-main">View Profile</button>
