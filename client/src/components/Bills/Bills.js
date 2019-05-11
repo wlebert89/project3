@@ -3,7 +3,7 @@ import "./Bills.css";
 
 function Bills(props) {
     return (
-        <div>
+        <div className="bill">
             <h5>{props.title}</h5>
             <h6>{props.date} | <a href={props.link} target="_blank" rel="noopener noreferrer">PDF Link</a></h6>
             <p>{props.description}</p>
