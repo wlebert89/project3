@@ -15,10 +15,7 @@ function Nav() {
                             <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/profile">Profile</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/letters">Send a Letter</a>
+                            <a className="nav-link" href="/letters">Letter Templates</a>
                         </li>
                     </ul>
                 </div>

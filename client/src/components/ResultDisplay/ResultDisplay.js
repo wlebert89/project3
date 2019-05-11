@@ -12,9 +12,9 @@ function ResultsDisplay(props) {
                 <div className="name">{props.name}</div>
                 <div className="description"> {props.party} | {props.role}</div>
                 <div className="contact-info"><i className="fas fa-phone contact-icon"></i>{props.phone}</div>
-                <div className="contact-info"><i className="fas fa-desktop contact-icon"></i>{props.website}</div>
-                <a className="contact-info" href={"https://facebook.com/" + props.facebook}><i className="fab fa-facebook-square social-icon"></i></a>
-                <a className="contact-info" href={"https://twitter.com/" + props.twitter}><i className="fab fa-twitter-square social-icon"></i></a>
+                <div className="contact-info"><a href={props.website} target="_blank" rel="noopener noreferrer"><i className="fas fa-desktop contact-icon"></i>{props.website}</a></div>
+                <a className="contact-info" href={"https://facebook.com/" + props.facebook} target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-square social-icon"></i></a>
+                <a className="contact-info" href={"https://twitter.com/" + props.twitter} target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter-square social-icon"></i></a>
             </div>
             <hr />
             <Link to={{
