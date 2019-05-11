@@ -64,11 +64,13 @@ img {
 .news {
     padding-left: 10px;
     height: 100%;
+    overflow: auto;
+    height: 600px;
 }
 
 /* Bills Section */
 .bills {
-    height: 360px;
+    height: 400px;
     overflow: auto;
     padding-right: 10px;
 }

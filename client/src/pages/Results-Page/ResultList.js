@@ -48,13 +48,13 @@ class ResultList extends React.Component {
                         {this.state.googleCivic.map(rep => {
                             return (
                                 <ResultsDisplay
-                                    // key={rep.id}
+                                    key={rep.name}
                                     image={rep.photoUrl || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
                                     name={rep.name}
                                     party={rep.party || "Party affiliation not available"} 
                                     // role={}
                                     phone={rep.phones[0] || "Phone number not available"}
-                                    email={rep.urls[0] || "Website not available"}
+                                    website={rep.urls[0] || "Website not available"}
                                 />
                             );
                         })}
