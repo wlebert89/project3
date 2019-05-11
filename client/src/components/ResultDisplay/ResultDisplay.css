@@ -51,6 +51,20 @@ img.picture {
     margin-right: 10px;
 }
 
+.social-icon {
+    color: #427a9e;
+    font-size: 36px;
+    margin: 10px;
+}
+
+a {
+    color: #000;
+}
+
+a:visited {
+    color: #000;
+}
+
 .btn-main {
     background: #427a9e;
     border: none;
