@@ -63,8 +63,28 @@ img {
 /* Graphs and Charts Section */
 .chart-section {
     height: 200px;
-    padding-right: 10px;
-    
+    padding-right: 10px; 
+}
+
+/* User Rating Section */
+.rating-section {
+    height: 200px;
+}
+
+.ratings {
+    display: inline-block;
+}
+
+.rating-button {
+    font-size: 14px;
+    background: #427a9e;
+    border: none;
+    border-radius: 50px;
+    margin: 0px 10px;
+}
+
+.rating-button:hover {
+    background: #427a9e;
 }
 
 /* News Section */
