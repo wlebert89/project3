@@ -2,14 +2,15 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema 
 
 //create schema 
-var lettersSchema = mongoose.Schema({
-    senatorName: String,
-    senotorState: String,
-    senotorZip: String,
-    senderName: String,
-    senderState: String,
-    senderZip: String,
-    letterText: String,
-})
+const ItemSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+date: {
+    type:Date,
+    default: Date.now
+}
+});
 
-module.exports = mongoose.model('Letter', lettersSchema);
+module.exports = Item = mongoose.model('item', ItemSchema);
