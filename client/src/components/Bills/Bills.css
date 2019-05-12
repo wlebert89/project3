@@ -1,3 +1,12 @@
 .bill {
-    padding: 10px 20px;
+    padding: 0px 20px;
+}
+
+.bill-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.pdf-link {
+    color: #427a9e;
 }
