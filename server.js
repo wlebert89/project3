@@ -1,5 +1,4 @@
 const express = require("express");
-// const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 
@@ -8,7 +7,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 
 
-//Bodyparser middleware 
+//Bodyparser middleware
 app.use(bodyParser.json());
 
 //DB config 
@@ -17,12 +16,13 @@ const db = process.env.MONGODB_URI || "mongodb://localhost/nictest"
 //connect to Mongo
 mongoose
 .connect(db)
- .then(() => console.log('Mongoose Connected...'))
+ .then(() => console.log('Mongoose Connected on ' + PORT))
  .catch(err => console.log(err));
 
  //Use routes
- const item = require("./models/item.js")
- app.use('../routes/mongo/item.js', item);
+ //"when /api/items is ca;; do whatever "items" says"
+ const items = require("./routes/api/items")
+ app.use('/api/items', items);
 
 const PORT = process.env.PORT || 3001;
 
