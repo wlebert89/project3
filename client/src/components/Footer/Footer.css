@@ -5,6 +5,7 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
+    border-top: 6px solid #a6dadc;
 }
 
 #footer-text {
