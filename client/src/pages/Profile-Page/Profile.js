@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
 import API from "../../API";
 import Bills from "../../components/Bills/Bills";
-import News from "../../components/News/News";
+import News from "../../components/News/news";
 import TopBar from "../../components/TopBar/TopBar";
 
 class Profile extends React.Component {
