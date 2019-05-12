@@ -9,7 +9,7 @@ const ItemSchema = new Schema({
     },
 date: {
     type:Date,
-    defulat: Date.now
+    default: Date.now
 }
 });
 
