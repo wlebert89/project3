@@ -83,11 +83,21 @@ class Profile extends React.Component {
                     <div className="row content-row">
                         <div className="col-md-8">
                             <div className="row">
-                                <div className="col-md-12 chart-section">
+                                <div className="col-md-6 chart-section">
                                     <div className="inner">
                                         <Pie
                                             financeData={this.state.financeData}
                                         />
+                                    </div>
+                                </div>
+
+                                <div className="col-md-6 rating-section">
+                                    <div className="inner">
+                                        <h2 className="section-title">User Rating</h2>
+                                        <div className="text-center">
+                                            <button type="button" class="btn btn-primary rating-button">Like</button>
+                                            <button type="button" class="btn btn-primary rating-button">Fuck You</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
