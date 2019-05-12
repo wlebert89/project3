@@ -3,6 +3,7 @@ import "./letters.css";
 import NavBar from "../../components/Nav/Nav";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
+import TopBar from "../../components/TopBar/TopBar";
 
 class Letters extends React.Component {
     render(){
@@ -12,6 +13,7 @@ class Letters extends React.Component {
                     <style>{'body { background-color: #f0f0f0;}'}</style>
                 </Helmet>
                 <NavBar />
+                <TopBar />
                 <div className="container">
                     <div className="row templates-row">
                         <div className="col-md-12">
@@ -53,26 +55,7 @@ class Letters extends React.Component {
                                 <p>Email</p>    
                             </div>
                         </div>
-                    </div>
-
-                    <div className="row letter-row">
-                        <div className="col-md-12">  
-                            <h3>Or Submit Your Own:</h3>  
-                            <form id="letters">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="letter-title" placeholder="Letter Title"/>
-                                </div>
-
-                                <div className="form-group">
-                                    <textarea className="form-control" id="letter-form" rows="10" placeholder="Letter Body" ></textarea>
-                                </div>
-                                
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" id="save-template">Save Template</button>
-                                </div>
-                            </form>
-                        </div>    
-                    </div>  
+                    </div> 
                 </div>
                 <Footer />
             </div>
