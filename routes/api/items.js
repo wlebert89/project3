@@ -12,15 +12,43 @@ router.post('/', (req, res) => {
     const newItem = new Item({
         name: req.body.name
         //doesnt need date even though its in the model
-
     })
 //save the item being posted and return it in json 
     newItem.save().then(item => res.json(item));
 });
 
-//READ
-//these are the parts that interacts with mongo
-//get route
+
+router.post('/button', (req, res) => {
+    Item.findOne({
+        representativeName: req.body.name
+    })
+    //save the item being posted and return it in json 
+    .then(result => {
+        // req.body.buttonType = "buttonLike" || "buttonDislike"
+        const buttonType = req.body.buttonType;
+        console.log("ted info: ", result)
+
+        Item.where({ representativeName: req.body.name }).update({
+            [buttonType]: result[buttonType] + 1
+        }).then(response => {
+            console.log("Update Response: ", response)
+            result[buttonType] = result[buttonType] + 1
+            res.json(result);
+        });
+    });
+});
+
+router.post('/buttons', (req, res) => {
+    Item.findOne({
+        representativeName: req.body.name
+    }).then(result => {
+        res.json(result);
+    })
+})
+
+
+
+
 router.get('/', (req, res) => {
     Item.find()
     .then(items => res.json(items))

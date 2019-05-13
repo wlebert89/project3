@@ -23,8 +23,19 @@ export default {
         return axios.post("/api/news", {
             query
         });
-    }    
+    },   
+  
+    likeButton: buttonData => {//method to call our 
+        return axios.post("/api/items/button", buttonData);
+    },
     
-}//Here we have our routes for the APIs
+    Refresh: representativeData => {//method to call our 
+        return axios.post("/api/items/buttons", representativeData);
+    }   
+}
+
+
+
+//Here we have our routes for the APIs
 //flow goes API>index.js => 
 //This is what we reference

@@ -3,14 +3,22 @@ var Schema = mongoose.Schema
 
 //create schema 
 const ItemSchema = new Schema({
-    name: {
-        type: String,
-        required: true
+
+    buttonLike: {
+        type: Number,
+        required: true,
+        default: 0
+
     },
-date: {
-    type:Date,
-    default: Date.now
-}
+    buttonDislike: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    representativeName: {
+        type: String,
+        required: true,
+    }
 });
 
 module.exports = Item = mongoose.model('item', ItemSchema);

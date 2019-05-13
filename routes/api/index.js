@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+const itemRoutes = require("./items.js");
 
 router.route("/openstate").post((req, res) => {
     axios.create({
@@ -53,5 +54,8 @@ router.route("/news").post((req, res) => {
         res.json(response.data);
     });
 });
+
+
+router.use("/items", itemRoutes);
 
 module.exports = router;
