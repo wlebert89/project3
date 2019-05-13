@@ -24,11 +24,11 @@ export default {
             query
         });
     },   
-  
+  //method thats posts buttondata to our route
     likeButton: buttonData => {//method to call our 
         return axios.post("/api/items/button", buttonData);
     },
-    
+    //same but we use this in ComponentDidMount so the data is visible on page load
     Refresh: representativeData => {//method to call our 
         return axios.post("/api/items/buttons", representativeData);
     }   

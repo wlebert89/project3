@@ -18,19 +18,6 @@ class Profile extends React.Component {
         financeData: []
     };
 
-    Increment = () => {
-        "Like button working";
-        let addCount = this.state.countGood + 1;
-        this.setState({
-            countGood: addCount
-        })}
-    Decrement = () => {
-        "Dislike button working";
-        let subtractCount = this.state.countBad - 1;
-        this.setState({
-            countBad: subtractCount
-        })  }
-
     HandleButtonClick = (event) => {
         const { name } = event.target;
         const apiObject = {
@@ -48,14 +35,13 @@ class Profile extends React.Component {
     };
 
      
-
-
     getLastName = fullName => {
         const name = fullName.split(" ");
         return name[name.length - 1];
     }
 
     componentDidMount() {
+        //Call api, set name to this pages name, then set state to match the button amounts 
         API.Refresh({ name: this.props.location.state.name }).then(response => {
             this.setState({
                 countBad:response.data.buttonDislike,
