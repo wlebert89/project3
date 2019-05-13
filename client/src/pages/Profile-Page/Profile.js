@@ -11,17 +11,44 @@ import TopBar from "../../components/TopBar/TopBar";
 
 class Profile extends React.Component {
     state = {
+        countGood: 0,
+        countBad:0,
         news: [],
         bills: [],
         financeData: []
     };
 
+    HandleButtonClick = (event) => {
+        const { name } = event.target;
+        const apiObject = {
+            name: this.props.location.state.name,
+            buttonType: name
+        };
+        API.likeButton(apiObject).then(response => {
+            console.log(response.data);
+            this.setState({
+                countBad:response.data.buttonDislike,
+                countGood:response.data.buttonLike,
+            })
+            // update the page to show the updated count
+        });
+    };
+
+     
     getLastName = fullName => {
         const name = fullName.split(" ");
         return name[name.length - 1];
     }
 
     componentDidMount() {
+        //Call api, set name to this pages name, then set state to match the button amounts 
+        API.Refresh({ name: this.props.location.state.name }).then(response => {
+            this.setState({
+                countBad:response.data.buttonDislike,
+                countGood:response.data.buttonLike,
+            })
+        })
+
         console.log(this.props.location.state.name);
         const name = this.props.location.state.name;
         const lastName = this.getLastName(name);
@@ -95,9 +122,8 @@ class Profile extends React.Component {
                                     <div className="inner">
                                         <h2 className="section-title">User Rating</h2>
                                         <div className="text-center">
-                                            <h3 id="user-rating">0%</h3>
-                                            <button type="button" class="btn btn-primary rating-button">Like</button>
-                                            <button type="button" class="btn btn-primary rating-button">Fuck You</button>
+                                            <button onClick={this.HandleButtonClick} name="buttonLike" class="btn btn-primary rating-button">Likes: {this.state.countGood}</button>
+                                            <button onClick={this.HandleButtonClick} name="buttonDislike" class="btn btn-primary rating-button">Dislike: -{this.state.countBad}</button>
                                         </div>
                                     </div>
                                 </div>
