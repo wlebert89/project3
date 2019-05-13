@@ -21,10 +21,10 @@ class ResultList extends React.Component {
                 const offices = response.data.offices;
                 const officials = response.data.officials;
                 const all = [];
-        
+
                 offices.forEach(office => {
                     const reps = [];
-        
+
                     office.officialIndices.forEach(i => {
                         const rep = {};
                         rep.name = officials[i].name;
@@ -32,7 +32,7 @@ class ResultList extends React.Component {
                         rep.party = officials[i].party;
                         rep.photoUrl = officials[i].photoUrl;
                         rep.urls = officials[i].urls;
-                        rep.channels = officials[i].channels;  
+                        rep.channels = officials[i].channels;
                         reps.push(rep);
                     });
                     reps.forEach(r => {
@@ -54,6 +54,41 @@ class ResultList extends React.Component {
             });
     }
 
+    renderAbout() {
+        return (
+            <div>
+                <h1 id="title">App Name Here</h1>
+                <div id="about">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias explicabo voluptates exercitationem mollitia saepe, maxime incidunt non unde laboriosam ullam.
+                    Voluptatum soluta eum, reprehenderit rerum consequuntur hic quia eius iure.
+                </div>
+            </div>
+        );
+    }
+
+    renderResults() {
+        return (
+            <div className="results-container">
+                {this.state.googleCivic.map(rep => {
+                    return (
+                        <ResultsDisplay
+                            key={rep.name}
+                            image={rep.photoUrl || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
+                            name={rep.name || "Name not available"}
+                            party={rep.party || "Party affiliation not available"}
+                            role={rep.office || "Official role not available"}
+                            phone={rep.phone[0] || "Phone number not available"}
+                            website={rep.urls[0] || "Website not available"}
+                            facebook={rep.channels[0].id}
+                            twitter={rep.channels[1].id}
+                        />
+                    );
+                })}
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
@@ -66,23 +101,7 @@ class ResultList extends React.Component {
                     placeholder="Enter a full address..."
                 />
                 <div className="container">
-                    <div className="results-container">
-                        {this.state.googleCivic.map(rep => {
-                            return (
-                                <ResultsDisplay
-                                    key={rep.name}
-                                    image={rep.photoUrl || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-                                    name={rep.name || "Name not available"}
-                                    party={rep.party || "Party affiliation not available"}
-                                    role={rep.office || "Official role not available"}
-                                    phone={rep.phone[0] || "Phone number not available"}
-                                    website={rep.urls[0] || "Website not available"}
-                                    facebook={rep.channels[0].id}
-                                    twitter={rep.channels[1].id}
-                                />
-                            );
-                        })}
-                    </div>
+                    {this.state.googleCivic.length === 0 ? this.renderAbout() : this.renderResults()}
                 </div>
                 <Footer />
             </div>
