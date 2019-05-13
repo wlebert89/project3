@@ -95,6 +95,7 @@ class Profile extends React.Component {
                                     <div className="inner">
                                         <h2 className="section-title">User Rating</h2>
                                         <div className="text-center">
+                                            <h3 id="user-rating">0%</h3>
                                             <button type="button" class="btn btn-primary rating-button">Like</button>
                                             <button type="button" class="btn btn-primary rating-button">Fuck You</button>
                                         </div>
@@ -104,7 +105,7 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 bills">
                                     <div className="inner bills">
-                                        <h2 className="section-title">Sponsored/Co-Sponsored Bills</h2>
+                                        <h2 className="section-title" id="bills-title">Sponsored/Co-Sponsored Bills</h2>
                                         {this.state.bills.map(bill => {
                                             return (
                                                 <Bills
@@ -123,7 +124,7 @@ class Profile extends React.Component {
 
                         <div className="col-md-4 news">
                             <div className="inner news">
-                                <h2 className="section-title">News</h2>
+                                <h2 className="section-title" id="news-title">News</h2>
                                 {this.state.news.map(article => {
                                     return (
                                     <News
