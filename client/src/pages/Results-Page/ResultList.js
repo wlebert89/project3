@@ -5,6 +5,7 @@ import ResultsDisplay from "../../components/ResultDisplay/ResultDisplay";
 import Nav from "../../components/Nav/Nav"
 import API from "../../API";
 import Footer from "../../components/Footer/Footer";
+import LandingPage from "../Landing-Page/LandingPage";
 import "./ResultsList.css";
 
 
@@ -44,26 +45,17 @@ class ResultList extends React.Component {
                 for (var i = 2; i < 5; i++) {
                     resArray.push(all[i]);
                 }
-                console.log(resArray);
                 this.setState({
                     googleCivic: resArray
                 });
-                console.log(this.state.googleCivic);
             }).catch(err => {
                 console.log(err);
             });
     }
 
-    renderAbout() {
+    renderLanding() {
         return (
-            <div>
-                <h1 id="title">App Name Here</h1>
-                <div id="about">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias explicabo voluptates exercitationem mollitia saepe, maxime incidunt non unde laboriosam ullam.
-                    Voluptatum soluta eum, reprehenderit rerum consequuntur hic quia eius iure.
-                </div>
-            </div>
+            <LandingPage />
         );
     }
 
@@ -80,8 +72,8 @@ class ResultList extends React.Component {
                             role={rep.office || "Official role not available"}
                             phone={rep.phone[0] || "Phone number not available"}
                             website={rep.urls[0] || "Website not available"}
-                            facebook={rep.channels[0].id}
-                            twitter={rep.channels[1].id}
+                            facebook={rep.channels[0].id || ""}
+                            twitter={rep.channels[1].id || ""}
                         />
                     );
                 })}
@@ -101,7 +93,7 @@ class ResultList extends React.Component {
                     placeholder="Enter a full address..."
                 />
                 <div className="container">
-                    {this.state.googleCivic.length === 0 ? this.renderAbout() : this.renderResults()}
+                    {this.state.googleCivic.length === 0 ? this.renderLanding() : this.renderResults()}
                 </div>
                 <Footer />
             </div>
