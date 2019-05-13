@@ -12,4 +12,6 @@ function News(props) {
     );
 }
 
+console.log("Pats are the best")
+
 export default News;

@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import "./landing.css";
 
@@ -8,27 +7,22 @@ function LandingPage() {
     return (
         <div>
             <Helmet>
-                <style>{'body { background-color: #1c3559; }'}</style>
+                <style>{'body { background-color: #427a9e; }'}</style>
             </Helmet>
-            <Nav />
             <div id="landing-main">
-                <div id="title">Project Overthrow.</div>
-                <div className="landing-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Fugit ut tempora fugiat sit molestiae veniam alias doloremque magni error est aliquam necessitatibus recusandae culpa vel, cupiditate debitis iure. 
-                    Hic, quod.
-                </div>
-                <div className="circle-bkg">
-                    <i className="user icon"></i>
+                <div id="title">Freedom of Information App</div>
+                <div className="landing-quote">
+                    “Such is the irresistible nature of truth, that all it asks, and all it wants, is the liberty of appearing.”
+                    <br />
+                    <br />
+                    -Thomas Paine
                 </div>
                 <div className="landing-description">
-                    Search by name.
+                    In order to further a more open and transparent democracy, the Freedom of Information App provides citizens with relevant information pertaining to their federal representatives.
+                    Enter your full address to gain a deeper insight into who represents you.
                 </div>
                 <div className="circle-bkg">
                     <i className="address card icon"></i>
-                </div>
-                <div className="landing-description">
-                    Search by zip code.
                 </div>
             </div>
             <Footer />
