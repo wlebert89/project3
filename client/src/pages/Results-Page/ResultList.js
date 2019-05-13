@@ -5,6 +5,7 @@ import ResultsDisplay from "../../components/ResultDisplay/ResultDisplay";
 import Nav from "../../components/Nav/Nav"
 import API from "../../API";
 import Footer from "../../components/Footer/Footer";
+import LandingPage from "../Landing-Page/LandingPage";
 import "./ResultsList.css";
 
 
@@ -21,10 +22,10 @@ class ResultList extends React.Component {
                 const offices = response.data.offices;
                 const officials = response.data.officials;
                 const all = [];
-        
+
                 offices.forEach(office => {
                     const reps = [];
-        
+
                     office.officialIndices.forEach(i => {
                         const rep = {};
                         rep.name = officials[i].name;
@@ -32,7 +33,7 @@ class ResultList extends React.Component {
                         rep.party = officials[i].party;
                         rep.photoUrl = officials[i].photoUrl;
                         rep.urls = officials[i].urls;
-                        rep.channels = officials[i].channels;  
+                        rep.channels = officials[i].channels;
                         reps.push(rep);
                     });
                     reps.forEach(r => {
@@ -44,14 +45,40 @@ class ResultList extends React.Component {
                 for (var i = 2; i < 5; i++) {
                     resArray.push(all[i]);
                 }
-                console.log(resArray);
                 this.setState({
                     googleCivic: resArray
                 });
-                console.log(this.state.googleCivic);
             }).catch(err => {
                 console.log(err);
             });
+    }
+
+    renderLanding() {
+        return (
+            <LandingPage />
+        );
+    }
+
+    renderResults() {
+        return (
+            <div className="results-container">
+                {this.state.googleCivic.map(rep => {
+                    return (
+                        <ResultsDisplay
+                            key={rep.name}
+                            image={rep.photoUrl || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
+                            name={rep.name || "Name not available"}
+                            party={rep.party || "Party affiliation not available"}
+                            role={rep.office || "Official role not available"}
+                            phone={rep.phone[0] || "Phone number not available"}
+                            website={rep.urls[0] || "Website not available"}
+                            facebook={rep.channels[0].id || ""}
+                            twitter={rep.channels[1].id || ""}
+                        />
+                    );
+                })}
+            </div>
+        );
     }
 
     render() {
@@ -66,23 +93,7 @@ class ResultList extends React.Component {
                     placeholder="Enter a full address..."
                 />
                 <div className="container">
-                    <div className="results-container">
-                        {this.state.googleCivic.map(rep => {
-                            return (
-                                <ResultsDisplay
-                                    key={rep.name}
-                                    image={rep.photoUrl || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-                                    name={rep.name || "Name not available"}
-                                    party={rep.party || "Party affiliation not available"}
-                                    role={rep.office || "Official role not available"}
-                                    phone={rep.phone[0] || "Phone number not available"}
-                                    website={rep.urls[0] || "Website not available"}
-                                    facebook={rep.channels[0].id}
-                                    twitter={rep.channels[1].id}
-                                />
-                            );
-                        })}
-                    </div>
+                    {this.state.googleCivic.length === 0 ? this.renderLanding() : this.renderResults()}
                 </div>
                 <Footer />
             </div>

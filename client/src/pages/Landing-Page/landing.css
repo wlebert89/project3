@@ -10,30 +10,29 @@
     font-size: 36px;
     line-height: 100%;
     color: #fff;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 40px;
+}
+
+.landing-quote {
+    text-align: center;
 }
 
 .landing-description {
     text-align: center;
     width: 80%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .circle-bkg {
-    background: #a6dadc;
+    background: #1c3559;
     margin: auto;
     margin-top: 60px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     position: relative;
-}
-
-.circle-bkg:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 5px #000;
 }
 
 .icon {

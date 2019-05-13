@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
 import API from "../../API";
 import Bills from "../../components/Bills/Bills";
-import News from "../../components/News/news";
+import News from "../../components/News/news2";
 import TopBar from "../../components/TopBar/TopBar";
 
 class Profile extends React.Component {
@@ -131,7 +131,7 @@ class Profile extends React.Component {
                             <div className="row">
                                 <div className="col-md-12 bills">
                                     <div className="inner bills">
-                                        <h2 className="section-title">Sponsored/Co-Sponsored Bills</h2>
+                                        <h2 className="section-title" id="bills-title">Sponsored/Co-Sponsored Bills</h2>
                                         {this.state.bills.map(bill => {
                                             return (
                                                 <Bills
@@ -150,7 +150,7 @@ class Profile extends React.Component {
 
                         <div className="col-md-4 news">
                             <div className="inner news">
-                                <h2 className="section-title">News</h2>
+                                <h2 className="section-title" id="news-title">News</h2>
                                 {this.state.news.map(article => {
                                     return (
                                     <News
