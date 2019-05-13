@@ -3,6 +3,7 @@ import "./letters.css";
 import NavBar from "../../components/Nav/Nav";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
+import TopBar from "../../components/TopBar/TopBar";
 
 class Letters extends React.Component {
     render(){
@@ -12,11 +13,17 @@ class Letters extends React.Component {
                     <style>{'body { background-color: #f0f0f0;}'}</style>
                 </Helmet>
                 <NavBar />
-                <div className="container">
-                    <div className="row templates-row">
-                        <div className="col-md-12">
+                <TopBar />
+                <div className="container letter-content">
+                    <div className="row">
+                        <div className="col-md-12 letter-title">
                             <h3>Copy one of our templates:</h3>
-                            <div id="letter-templates">
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-6">        
+                            <div className="letter">
                                 <p>The Honorable (full name)</p>
                                 <p>U.S. House of Representatives</p>
                                 <p>Washington, D.C. 20515</p>
@@ -43,7 +50,7 @@ class Letters extends React.Component {
 
                                 <p>Thank you for your consideration of my viewpoint on this matter. I believe it is an 
                                     important issue, and would like to see the legislation (pass, fail, or be amended) 
-                                    to ensure effective educational services for the students involved.</p>
+                                    to (goal you would like accomplished).</p>
                                 <br></br>
                                 <p>Sincerely,</p>
 
@@ -53,26 +60,42 @@ class Letters extends React.Component {
                                 <p>Email</p>    
                             </div>
                         </div>
+
+                        <div className="col-md-6">
+                            <div className="letter">
+                                <p>Month, Day, Year</p>
+                                <p>The Honorable (first name, last name)</p>
+                                <p>(Office Address)</p>
+                                <br></br>
+                                <p>RE: (state the topic or include the bill number, 
+                                    author, and subject if you are writing to support 
+                                    or oppose a particular legislative bill)</p>
+                                <br></br>    
+                                <p>Dear (Assembly Member/Senator)(Last name),</p>
+                                <br></br>
+                                <p>My name is (your name) and I am a (advocate/community 
+                                    member/family member/other title) who resides in your district</p>
+                                <p>(State why you support or oppose the bill/issue here. Choose up 
+                                    to three of the strongest points that support your position and 
+                                    state them clearly.)
+                                </p>
+                                <p>(Include a personal story here. Tell your representative why the issue 
+                                    is important to you and how it affects you, your family, and your 
+                                    community.)
+                                </p>
+                                <p>(Tell your representative how you want him/her to vote on this issue and 
+                                    ask for a response. Be sure to include your name and address on both 
+                                    your letter and envelope.)
+                                </p>
+                                <p>Sincerely,</p>
+                                <p>SIGN YOUR NAME HERE</p>
+                                <br></br>
+                                <p>Print your name</p>
+                                <p>Street address</p>
+                                <p>City, State, Zip Code</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="row letter-row">
-                        <div className="col-md-12">  
-                            <h3>Or Submit Your Own:</h3>  
-                            <form id="letters">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="letter-title" placeholder="Letter Title"/>
-                                </div>
-
-                                <div className="form-group">
-                                    <textarea className="form-control" id="letter-form" rows="10" placeholder="Letter Body" ></textarea>
-                                </div>
-                                
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" id="save-template">Save Template</button>
-                                </div>
-                            </form>
-                        </div>    
-                    </div>  
                 </div>
                 <Footer />
             </div>

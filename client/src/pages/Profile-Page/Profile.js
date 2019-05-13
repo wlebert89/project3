@@ -6,7 +6,8 @@ import Footer from "../../components/Footer/Footer";
 import Pie from "../../components/PieChart/pie";
 import API from "../../API";
 import Bills from "../../components/Bills/Bills";
-import News from "../../components/News/news";
+import News from "../../components/News/news2";
+import TopBar from "../../components/TopBar/TopBar";
 
 class Profile extends React.Component {
     state = {
@@ -61,6 +62,7 @@ class Profile extends React.Component {
                     <style>{'body { background-color: #f0f0f0;} h3 {text-align: left;}'}</style>
                 </Helmet>
                 <NavBar />
+                <TopBar />
                 <div className="container profile-container">
                     <div className="row profile-header">
                         <div className="col-md-4 text-center">
@@ -69,7 +71,7 @@ class Profile extends React.Component {
 
                         <div className="col-md-8 header-info">
                             <h2>{this.props.location.state.name}</h2>
-                            <h3>{this.props.location.state.role}| {this.props.location.state.party}</h3>
+                            <h3>{this.props.location.state.role} | {this.props.location.state.party}</h3>
                             <p>{this.props.location.state.phone} | <a href={this.props.location.state.website}>{this.props.location.state.website}</a></p>
                             <div className="social-links">
                                 <a href={"https://facebook.com/" + this.props.location.state.facebook}><i className="fab fa-facebook-square social-icon"></i></a>
@@ -81,18 +83,29 @@ class Profile extends React.Component {
                     <div className="row content-row">
                         <div className="col-md-8">
                             <div className="row">
-                                <div className="col-md-12 chart-section">
+                                <div className="col-md-6 chart-section">
                                     <div className="inner">
                                         <Pie
                                             financeData={this.state.financeData}
                                         />
                                     </div>
                                 </div>
+
+                                <div className="col-md-6 rating-section">
+                                    <div className="inner">
+                                        <h2 className="section-title">User Rating</h2>
+                                        <div className="text-center">
+                                            <h3 id="user-rating">0%</h3>
+                                            <button type="button" class="btn btn-primary rating-button">Like</button>
+                                            <button type="button" class="btn btn-primary rating-button">Fuck You</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-12 bills">
                                     <div className="inner bills">
-                                        <h2 className="section-title">Sponsored/Co-Sponsored Bills</h2>
+                                        <h2 className="section-title" id="bills-title">Sponsored/Co-Sponsored Bills</h2>
                                         {this.state.bills.map(bill => {
                                             return (
                                                 <Bills
@@ -111,7 +124,7 @@ class Profile extends React.Component {
 
                         <div className="col-md-4 news">
                             <div className="inner news">
-                                <h2 className="section-title">News</h2>
+                                <h2 className="section-title" id="news-title">News</h2>
                                 {this.state.news.map(article => {
                                     return (
                                     <News
