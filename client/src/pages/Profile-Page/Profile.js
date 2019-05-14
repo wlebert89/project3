@@ -123,13 +123,13 @@ class Profile extends React.Component {
                                         <h2 className="section-title">User Rating</h2>
                                         <div className="text-center">
                                             <button onClick={this.HandleButtonClick} name="buttonLike" class="btn btn-primary rating-button">Likes: {this.state.countGood}</button>
-                                            <button onClick={this.HandleButtonClick} name="buttonDislike" class="btn btn-primary rating-button">Dislike: -{this.state.countBad}</button>
+                                            <button onClick={this.HandleButtonClick} name="buttonDislike" class="btn btn-primary rating-button">Dislike: {this.state.countBad}</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-12 bills">
+                                <div className="col-md-12 bills bills-outer">
                                     <div className="inner bills">
                                         <h2 className="section-title" id="bills-title">Sponsored/Co-Sponsored Bills</h2>
                                         {this.state.bills.map(bill => {
@@ -148,7 +148,7 @@ class Profile extends React.Component {
                             </div>
                         </div>
 
-                        <div className="col-md-4 news">
+                        <div className="col-md-4 news news-outer">
                             <div className="inner news">
                                 <h2 className="section-title" id="news-title">News</h2>
                                 {this.state.news.map(article => {
