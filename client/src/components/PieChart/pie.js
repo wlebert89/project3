@@ -20,7 +20,9 @@ function PieChart(props) {
                             display:true,
                             text: "Campaign Finance Sources",
                             fontSize: 16,
-                            padding: 1
+                            padding: 5,
+                            fontFamily: "Playfair Display",
+                            fontColor: "black"
                         },
                         legend:{
                             position: 'bottom',

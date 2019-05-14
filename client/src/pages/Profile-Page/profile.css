@@ -20,6 +20,7 @@ h5, h6 {
     padding: 15px;
     border: 1px solid rgb(216, 216, 216);
     border-radius: 4px;
+    box-shadow: 0px 0px 5px #ddd;
 }
 
 .profile-container {
@@ -38,6 +39,7 @@ img {
     background-color: white;
     border: 1px solid rgb(216, 216, 216);
     border-radius: 4px;
+    box-shadow: 0px 0px 5px #ddd;
 }
 
 .header-info {
@@ -58,6 +60,7 @@ img {
     border-bottom: 2px solid #427a9e;
     margin-bottom: 20px;
     padding: 0px 0px 15px 0px;
+    font-family: 'Playfair Display', serif;
 }
 
 /* Graphs and Charts Section */
@@ -85,12 +88,12 @@ img {
     background: #427a9e;
     border: none;
     border-radius: 50px;
-    margin: 10px;
-    width: 80px;
+    margin: 25px 10px;
+    width: 100px;
 }
 
 .rating-button:hover {
-    background: #427a9e;
+    background: #1c3559;
 }
 
 /* News Section */
@@ -116,4 +119,31 @@ img {
     margin-right: 5px;
 }
 
+/* Media Queries */
+@media screen and (max-width: 1000px) {
+    .rating-button {
+        margin: 5px;
+    }
 
+    canvas {
+        margin-left: -58px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    canvas {
+        margin: 0 auto;
+    }
+
+    .rating-button {
+        margin: 25px 10px;
+    }
+
+    .bills-outer {
+        margin-bottom: 20px;
+    }
+
+    .news-outer {
+        margin-left: 5px;
+    }
+}

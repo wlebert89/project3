@@ -79,13 +79,13 @@ a:visited {
 
 /* RESPONSIVE SETTINGS */
 
-/* @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
 
     .result {
         max-width: calc(50% -  1em);
     }
 
-} */
+}
 
 @media screen and (max-width: 640px) {
 
