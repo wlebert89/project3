@@ -11,7 +11,8 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json());
 
 //DB config 
-const db = process.env.MONGODB_URI || "mongodb://localhost/nictest";
+const db = process.env.MONGODB_URI || "mongodb+srv://NicoP93:Bluejaylane132@cluster0-vplwy.mongodb.net/test?retryWrites=true"
+//const db = process.env.MONGODB_URI || "mongodb://localhost/nictest";
 
 //connect to Mongo
 mongoose
