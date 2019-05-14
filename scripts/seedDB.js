@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Item = require("../models/item.js");
 
 mongoose
-.connect(process.env.MONGOD_URI || "mongodb://localhost/Test");
+.connect(process.env.MONGODB_URI || "mongodb://localhost/Test");
 
 const RepSeed = [{
     buttonLike:0,
