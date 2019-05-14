@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //The model in the db that we will interact with
-var Item = require('../../models/Item');
+var Item = require('../../models/item.js');
 
 
 router.post('/', (req, res) => {
