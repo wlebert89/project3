@@ -12,12 +12,12 @@ app.use(bodyParser.json());
 
 //DB config 
 // const db = process.env.MONGODB_URI || "mongodb+srv://NicoP93:Bluejaylane132@cluster0-vplwy.mongodb.net/test?retryWrites=true"
-// const db = process.env.MONGODB_URI || "mongodb://localhost/nictest";
-const db = process.env.MONGOD_URI || "mongodb://heroku_src8gd0k:56aoo5d5nq2l38ehvum9n96lu1@ds155616.mlab.com:55616/heroku_src8gd0k"
+const db = process.env.MONGODB_URI || "mongodb://localhost/nictest";
+// const db = process.env.MONGOD_URI || "mongodb://heroku_src8gd0k:56aoo5d5nq2l38ehvum9n96lu1@ds155616.mlab.com:55616/heroku_src8gd0k"
 
 // mongodb://heroku_src8gd0k:56aoo5d5nq2l38ehvum9n96lu1@ds155616.mlab.com:55616/heroku_src8gd0k
 // heroku_src8gd0k
-//connect to Mongo
+
 mongoose
 .connect(db)
  .then(() => {
