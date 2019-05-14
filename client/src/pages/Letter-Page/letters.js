@@ -17,7 +17,7 @@ class Letters extends React.Component {
                 <div className="container letter-content">
                     <div className="row">
                         <div className="col-md-12 letter-title">
-                            <h3>Copy one of our templates:</h3>
+                            <h3 className="letter-title">Copy one of our templates:</h3>
                         </div>
                     </div>
 
