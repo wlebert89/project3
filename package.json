@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/NicoP93/Project3#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body": "^5.1.0",
     "body-parser": "^1.19.0",
     "chart.js": "^2.8.0",
